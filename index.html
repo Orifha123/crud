@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> 
+  <script src="crud.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  
+  <script type="module"></script>
+  <link rel="stylesheet" href="style.css">
+
+
+    
+  </script>
+</head>
+<body>
+  <div x-data="carCrudApp()">
+    <h1> CRUD</h1>
+    
+    <h2>Add a Car</h2>
+    <form @submit.prevent="createCar">
+      <input x-model="newCar.color" placeholder="Color" required>
+      <input x-model="newCar.make" placeholder="Make" required>
+      <input x-model="newCar.model" placeholder="Model" required>
+      <input x-model="newCar.reg_number" placeholder="Registration Number" required>
+      <button type="submit">Add Car</button>
+    </form>
+
+    
+    <h2>Car List</h2>
+    <ul>
+      <template x-for="car in cars" :key="car.reg_number">
+        <li>
+          <span x-text="car.color"></span> - 
+          <span x-text="car.make"></span> - 
+          <span x-text="car.model"></span> - 
+          <span x-text="car.reg_number"></span>
+          <button @click="deleteCar(car.reg_number)">Delete</button>
+          <button @click="editCar(car)">Edit</button>
+        </li>
+      </template>
+    </ul>
+
+    <template x-if="editing">
+      <div>
+        <h2>Edit Car</h2>
+        <form @submit.prevent="updateCar">
+          <input x-model="currentCar.color" placeholder="Color" required>
+          <input x-model="currentCar.make" placeholder="Make" required>
+          <input x-model="currentCar.model" placeholder="Model" required>
+          <input x-model="currentCar.reg_number" placeholder="Registration Number" required>
+          <button type="submit">Update Car</button>
+        </form>
+      </div>
+    </template>
+  </div>
+</body>
+</html>

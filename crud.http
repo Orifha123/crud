@@ -1,0 +1,15 @@
+### get all the cars
+GET http://localhost:3000/cars
+
+### createCar
+post http://localhost:3000/cars
+
+
+
+
+###delete
+delete http://localhost:3000/cars/${reg_number}
+
+
+###post
+put http://localhost:3000/cars/${this.currentCar.reg_number}
