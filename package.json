@@ -20,6 +20,7 @@
   "contributors": [],
   "scripts": {
     "dev": "nodemon indexx.js",
+    "start": "node index.js",
     "test": ""
   },
   "description": "",

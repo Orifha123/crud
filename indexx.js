@@ -1,8 +1,7 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+const cors = require('cors');
 import cors from 'cors';
-import { cars } from './car.data.js';
-// import { mostPopular } from './mostPopulaCar.js'; // Uncomment if needed
+import { cars } from './car.data.js'
 
 const app = express();
 // app.use(bodyParser.json()); // Replace with express.json() for cleaner code
@@ -36,7 +35,7 @@ app.delete('/cars/:reg_number', (req, res) => {
   res.status(204).send();
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
