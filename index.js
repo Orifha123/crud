@@ -1,5 +1,4 @@
 import express from 'express';
-const cors = require('cors');
 import cors from 'cors';
 import { cars } from './car.data.js'
 
