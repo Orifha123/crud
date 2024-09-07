@@ -2,18 +2,12 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { cars } from './car.data.js';
-// import {cars} from 'car.data.js'
-
+// import { mostPopular } from './mostPopulaCar.js'; // Uncomment if needed
 
 const app = express();
-app.use(bodyParser.json());
+// app.use(bodyParser.json()); // Replace with express.json() for cleaner code
+app.use(express.json());
 app.use(cors());
-
-
-
-// let cars = [
-//   { color: "o", make: "Ford", model: "Fiesta", reg_number: "CL 77790" }
-// ];
 
 // Create
 app.post('/cars', (req, res) => {

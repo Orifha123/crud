@@ -16,18 +16,25 @@
 </head>
 <body>
   <div x-data="carCrudApp()">
-    <h1> CRUD</h1>
-    
-    <h2>Add a Car</h2>
-    <form @submit.prevent="createCar">
-      <input x-model="newCar.color" placeholder="Color" required>
-      <input x-model="newCar.make" placeholder="Make" required>
-      <input x-model="newCar.model" placeholder="Model" required>
-      <input x-model="newCar.reg_number" placeholder="Registration Number" required>
-      <button type="submit">Add Car</button>
-    </form>
-
-    
+    <button @click="createCar">Create Car</button>
+    <ul>
+      <template x-for="car in cars">
+        <li>
+          <span x-text="car.make"></span>
+          <span x-text="car.model"></span>
+          <span x-text="car.reg_number"></span>
+          <button @click="deleteCar(car.reg_number)">Delete</button>
+          <button @click="editCar(car)">Edit</button>
+        </li>
+      </template>
+    </ul>
+  
+    <div x-show="editing">
+      <input type="text" x-model="currentCar.make">
+      <input type="text" x-model="currentCar.model">
+      <input type="text" x-model="currentCar.reg_number">
+      <button @click="updateCar">Update</button>
+    </div>
     <h2>Car List</h2>
     <ul>
       <template x-for="car in cars" :key="car.reg_number">
@@ -42,18 +49,11 @@
       </template>
     </ul>
 
-    <template x-if="editing">
-      <div>
-        <h2>Edit Car</h2>
-        <form @submit.prevent="updateCar">
-          <input x-model="currentCar.color" placeholder="Color" required>
-          <input x-model="currentCar.make" placeholder="Make" required>
-          <input x-model="currentCar.model" placeholder="Model" required>
-          <input x-model="currentCar.reg_number" placeholder="Registration Number" required>
-          <button type="submit">Update Car</button>
-        </form>
-      </div>
-    </template>
+  </div>
+
+    
+    
+    
   </div>
 </body>
 </html>

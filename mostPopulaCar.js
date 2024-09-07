@@ -1,4 +1,4 @@
-function mostPopularCar(cars) {
+export function mostPopularCar(cars) {
     const allCars = {};
     for (let i = 0; i < cars.length; i++) {
       let carList = cars[i];
